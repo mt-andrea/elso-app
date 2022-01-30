@@ -2,7 +2,7 @@ import React from 'react';
 
 function Note(){
 return(
-  <div>
+  <div className='note'>
   <h1>Jegyzet címe</h1>
   <p>Jegyzet szövege</p>
   </div>
