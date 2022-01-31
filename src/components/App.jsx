@@ -3,10 +3,12 @@ import Header from "./Header";
 import Note from "./Note";
 import Footer from "./Footer";
 import notes from '../notes'
+import CreateArea from '../components/CreateArea'
 
 function App(){
     return(<div>
         <Header />
+        <CreateArea/>
         {notes.map(n=>
         <Note
             key={n.key}
