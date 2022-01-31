@@ -12,6 +12,10 @@ function App(){
         setNotes([...notes,uj])
     }
 
+    function torol(id) {
+        setNotes(notes.filter((n,index)=>index!=id))
+    }
+
     return(<div>
         <Header />
         <CreateArea atad={hozzaad} />
@@ -20,7 +24,9 @@ function App(){
             key={index}
             id={index}
             title={n.title}
-            content={n.content}/> )}
+            content={n.content}
+            torles={torol}
+            /> )}
         <Footer/>
     </div>)
 }
