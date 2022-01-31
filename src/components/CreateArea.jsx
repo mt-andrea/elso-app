@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function CreateArea() {
+function CreateArea(props) {
 
     const [note, setNote] = useState({
         title:"",
@@ -13,6 +13,15 @@ function CreateArea() {
             ...note,
             [name]:value
         })
+    }
+
+    function elkuldes(e) {
+        props.atad(note)
+        setNote({
+            title:"",
+            content:""
+        })
+        e.preventDefault()
     }
 
     return(
@@ -31,7 +40,7 @@ function CreateArea() {
             rows="3" 
             placeholder='Jegyzet'
             />
-            <button>+</button>
+            <button onClick={elkuldes}>+</button>
         </form>
     )
 }
