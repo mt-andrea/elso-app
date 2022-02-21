@@ -9,12 +9,38 @@ function App(){
     const [notes,setNotes]=useState([])
 
     function hozzaad(uj) {
-        setNotes([...notes,uj])
+        const url='http://localhost:5000/notes'
+        fetch(url,{
+            method:'post',
+            headers:{'Content-type':'application/json;charset=utf-8'},
+            body: JSON.stringify({
+                'title':uj.title,
+                'content':uj.content
+            })
+
+        })
+        .then(()=>beolvas())
+        .catch(err=>console.log(err))
     }
 
     function torol(id) {
-        setNotes(notes.filter((n,index)=>index!=id))
+        const url='http://localhost:5000/notes'+id
+        fetch(url,{
+            method:'delete'
+        })
+        .then(()=>beolvas())
+        .catch(err=>console.log(err))
     }
+    function beolvas() {
+        fetch('http://localhost:5000/notes')
+        .then((res)=>res.json())
+        .then((json)=>setNotes(json))
+        .catch(err=>console.log(err))
+    }
+    useEffect(() => {
+        beolvas()
+    }
+    , []);
 
     return(<div>
         <Header />
